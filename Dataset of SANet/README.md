@@ -3,7 +3,12 @@
 ## Download address
 
 ### Google Drive
+
 https://drive.google.com/file/d/1X4LgvIpzPtXUWysF5VL-css-B65fBgiL/view?usp=sharing
+
+### Kaggle
+
+https://www.kaggle.com/datasets/fushangdaren/bearing-dataset-of-you-can-get-smaller
 
 ### 百度云盘
 
@@ -18,12 +23,15 @@ https://drive.google.com/file/d/1X4LgvIpzPtXUWysF5VL-css-B65fBgiL/view?usp=shari
 ### BibTex
 
 @article{FANG2023101890,
+
 title = {You can get smaller: A lightweight self-activation convolution unit modified by transformer for fault diagnosis},
-journal = {Advanced Engineering Informatics},
-volume = {55},
-pages = {101890},
-year = {2023},
-issn = {1474-0346},
-doi = {https://doi.org/10.1016/j.aei.2023.101890},
+
 author = {HaiRui Fang and Jin Deng and DongSheng Chen and WenJuan Jiang and SiYu Shao and MingCong Tang and JingJing Liu},
+
+journal = {Advanced Engineering Informatics},
+
+volume = {55}, pages = {101890}, year = {2023},
+
+doi = {https://doi.org/10.1016/j.aei.2023.101890},
+
 }
