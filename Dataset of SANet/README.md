@@ -27,5 +27,4 @@ title = {You can get smaller: A lightweight self-activation convolution unit mod
 author = {HaiRui Fang and Jin Deng and DongSheng Chen and WenJuan Jiang and SiYu Shao and MingCong Tang and JingJing Liu},
 journal = {Advanced Engineering Informatics},
 volume = {55}, pages = {101890}, year = {2023},
-doi = {https://doi.org/10.1016/j.aei.2023.101890},
-}
+doi = {https://doi.org/10.1016/j.aei.2023.101890},}
