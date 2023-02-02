@@ -22,16 +22,10 @@ https://www.kaggle.com/datasets/fushangdaren/bearing-dataset-of-you-can-get-smal
 
 ### BibTex
 
-@article{FANG2023101890,
-
+@article{AEI2023101890Fang,
 title = {You can get smaller: A lightweight self-activation convolution unit modified by transformer for fault diagnosis},
-
 author = {HaiRui Fang and Jin Deng and DongSheng Chen and WenJuan Jiang and SiYu Shao and MingCong Tang and JingJing Liu},
-
 journal = {Advanced Engineering Informatics},
-
 volume = {55}, pages = {101890}, year = {2023},
-
 doi = {https://doi.org/10.1016/j.aei.2023.101890},
-
 }
