@@ -1,8 +1,14 @@
 # MgNet: A Fault Diagnosis Approach for Multi-bearing System Based on Auxiliary Bearing And Multi-granularity Information Fusion
 
+![Figs1](https://user-images.githubusercontent.com/121926828/222310465-70fa1520-5aac-4f0f-b61d-6aa0e95103c7.png)
+
+## DOI
+
 https://doi.org/10.1016/j.ymssp.2023.110253
 
-![Figs1](https://user-images.githubusercontent.com/121926828/222310465-70fa1520-5aac-4f0f-b61d-6aa0e95103c7.png)
+## personalized Share Link
+https://authors.elsevier.com/c/1gh9z39~t0fe07
+
 
 ## Dataset download address
 
