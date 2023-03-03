@@ -1,5 +1,10 @@
 # You Can Get Smaller: A Lightweight Self-activation Convolution Unit Modified by Transformer for Fault Diagnosis
 
+
+
+## personalized Share Link
+https://authors.elsevier.com/c/1gWkY5FA1k5ovw
+
 ## Download address
 
 ### Google Drive
