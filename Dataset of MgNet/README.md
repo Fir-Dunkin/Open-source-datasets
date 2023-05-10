@@ -6,9 +6,6 @@
 
 https://doi.org/10.1016/j.ymssp.2023.110253
 
-## personalized Share Link
-https://authors.elsevier.com/c/1gh9z39~t0fe07
-
 
 ## Dataset download address
 
@@ -25,4 +22,16 @@ https://drive.google.com/drive/folders/1YgWOxJ1oWDrX-uX9I0Ne1WbI-C2E8D4Q?usp=sha
 
 ## Reference format
 
-pending
+### BIB:
+@article{deng2023mgnet,
+  title={MgNet: A fault diagnosis approach for multi-bearing system based on auxiliary bearing and multi-granularity information fusion},
+  author={Deng, Jin and Liu, Han and Fang, Hairui and Shao, Siyu and Wang, Dong and Hou, Yimin and Chen, Dongsheng and Tang, Mingcong},
+  journal={Mechanical Systems and Signal Processing},
+  volume={193},
+  pages={110253},
+  year={2023},
+  publisher={Elsevier}
+}
+
+### 
+Deng J, Liu H, Fang H, et al. MgNet: A fault diagnosis approach for multi-bearing system based on auxiliary bearing and multi-granularity information fusion[J]. Mechanical Systems and Signal Processing, 2023, 193: 110253.
