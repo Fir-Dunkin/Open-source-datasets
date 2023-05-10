@@ -33,5 +33,5 @@ https://drive.google.com/drive/folders/1YgWOxJ1oWDrX-uX9I0Ne1WbI-C2E8D4Q?usp=sha
   publisher={Elsevier}
 }
 
-### 
+### GB/T 7714
 Deng J, Liu H, Fang H, et al. MgNet: A fault diagnosis approach for multi-bearing system based on auxiliary bearing and multi-granularity information fusion[J]. Mechanical Systems and Signal Processing, 2023, 193: 110253.
