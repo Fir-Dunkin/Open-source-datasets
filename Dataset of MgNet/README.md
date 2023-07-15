@@ -9,7 +9,13 @@ https://doi.org/10.1016/j.ymssp.2023.110253
 
 ## Dataset download address
 
-### drive.google
+### Recommended Read Code
+
+from scipy.io import loadmat
+
+dataset = loadmat(datapath)
+
+### Drive.google
 
 https://drive.google.com/drive/folders/1YgWOxJ1oWDrX-uX9I0Ne1WbI-C2E8D4Q?usp=sharing
 
