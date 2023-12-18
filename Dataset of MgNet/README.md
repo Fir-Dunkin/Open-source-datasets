@@ -11,9 +11,23 @@ https://doi.org/10.1016/j.ymssp.2023.110253
 
 ### Recommended Read Code by *Python*
 
+#### for .mat 
+
 from scipy.io import loadmat
 
 dataset = loadmat(datapath)
+
+#### for .npy 
+
+import numpy as np
+
+samples = np.load(samplespath)
+
+targets = np.load(targetspath)
+
+### OneDrive (Priority recommendation: including data stored in both mat and npy formats.)
+
+https://seunic-my.sharepoint.cn/:f:/g/personal/230229346_seu_edu_cn/EnKVRQVqv0JNhcJ-mbXNQi0BRPNl73kc-3hq_zO8igvGeQ
 
 ### Drive.google
 
