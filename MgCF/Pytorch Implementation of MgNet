@@ -1,0 +1,155 @@
+import torch
+import torch.nn as nn
+from torch.nn import functional as F
+
+
+## Linear
+class Linear(nn.Module):
+    def __init__(self, in_features, out_features, norm = None, act = None, zeros_init = False, with_bias = True ):
+        super().__init__()
+        
+        self.Linear = nn.Linear(in_features, out_features)
+        
+        if zeros_init:
+            nn.init.zeros_(self.Linear.weight)
+        else:
+            nn.init.kaiming_uniform_(self.Linear.weight)
+            
+        if with_bias:
+            nn.init.zeros_(self.Linear.bias)
+        
+        self.norm = norm
+        self.act = act
+        
+    def forward(self, x):
+        
+        x = self.Linear(x)
+        
+        if self.norm is not None:
+            x = self.norm(x)
+        if self.act is not None:
+            x = self.act(x)
+        
+        return x
+        
+## Conv
+class Conv1D(nn.Module):
+    def __init__(self, in_channels, out_channel, kernel = 5, stride = 1, norm = None, act = None):
+        super().__init__()
+        
+        self.conv = nn.Conv1d(in_channels, out_channel, kernel, stride, padding = int((kernel-1)/2))
+            
+        nn.init.kaiming_uniform_(self.conv.weight)
+        nn.init.zeros_(self.conv.bias)
+        
+        self.norm = norm
+        self.act = act
+        
+    def forward(self, x):
+        
+        x = self.conv(x)
+        
+        if self.norm is not None:
+            x = self.norm(x)
+        if self.act is not None:
+            x = self.act(x)
+        
+        return x
+
+## Add
+class Add(nn.Module):
+    def __init__(self, number = 2):
+        super().__init__()
+        self.weights = nn.Parameter(torch.ones(number, dtype=torch.float32), requires_grad=True)
+        
+    def forward(self, x):
+        w = F.relu(self.weights)
+        return x[0]*w[0] + x[1]*w[1]
+
+## ACON
+class ACON(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.α = nn.Parameter(torch.ones(2, dtype=torch.float32), requires_grad=True)
+        
+    def forward(self, x):
+        α = F.relu(self.α)
+        x = α[0] * x * torch.sigmoid(x * α[1])
+        return x
+
+# Backbone
+## MgNet
+### base
+class MgFF(nn.Module):
+    def __init__(self, d_in, d_out):
+        super().__init__()
+        
+        self.convs = nn.ModuleList([
+            nn.Sequential(
+                Conv1D( d_in, d_out//4, kernel = 2**(k+2)+1, stride = 2, norm = nn.BatchNorm1d(d_out//4), act = ACON() ),  
+                Conv1D( d_out//4, d_out//4, kernel = 2**(k+2)+1, stride = 2, norm = nn.BatchNorm1d(d_out//4), act = ACON() )
+                ) for k in range(4)
+        ])
+        
+        self.add = Add()
+        
+        self.idx = nn.Sequential( Conv1D( d_in, d_out, kernel = 1, stride = 1, norm = nn.BatchNorm1d(d_out), act = ACON() ), nn.MaxPool1d(4, 4) )
+        
+        self.point = Conv1D( d_out, d_out, kernel = 1, stride = 1, norm = nn.BatchNorm1d(d_out), act = ACON() )
+    
+    def forward(self, x):
+        
+        i = self.idx(x)
+        
+        xes = []
+        for conv in self.convs:
+            xes.append(conv(x))
+        x = torch.cat(xes, dim = 1)
+        
+        x = self.point(x)
+        
+        x = self.add([x, i])
+        
+        return x
+
+### Encoder
+class MgNet(nn.Module):
+    def __init__( self, dims, Stages = [4, 16, 64, 128] ):
+        super().__init__()
+        
+        '''
+        Stages: In the original MgNet experiment, the Stages was set to [4, 16, 64, 128] and the default single channel data input, which can be modified according to actual needs.
+        '''
+        
+        self.stages = nn.Sequential(
+            MgFF(1, Stages[0]), MgFF(Stages[0], Stages[1]),
+            MgFF(Stages[1], Stages[2]), MgFF(Stages[2], Stages[3])
+            )
+        
+        self.weights = nn.Parameter(torch.as_tensor([1, 0], dtype=torch.float32), requires_grad=True)
+        self.projector = Linear( Stages[3], dims )
+        
+    def forward(self, x):
+
+        weights = F.relu( self.weights )
+        z = self.stages(x)
+        
+        return self.projector( z.mean(2) * weights[0] + z.max(2)[0] * weights[1] )
+
+
+class Get_Model(nn.Module):
+    def __init__(self, categories, model, dims = 64 ):
+        super().__init__()
+
+        if model == 'MgNet':
+            self.backbone =  MgNet( dims )
+        if model == 'MSACNN':
+            self.backbone =  MSACNN( dims )
+        self.predictor = Linear( dims, categories, zeros_init = True )
+        
+    def forward(self, x):
+        
+        z = self.backbone(x)
+        prediction = self.predictor( z )
+        
+        return prediction
