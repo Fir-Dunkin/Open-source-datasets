@@ -1,3 +1,12 @@
+'''
+@article{deng2023mgnet, 
+ title={MgNet: A fault diagnosis approach for multi-bearing system based on auxiliary bearing and multi-granularity information fusion}, 
+ author={Deng, Jin and Liu, Han and Fang, Hairui and Shao, Siyu and Wang, Dong and Hou, Yimin and Chen, Dongsheng and Tang, Mingcong}, 
+ journal={Mechanical Systems and Signal Processing}, 
+ volume={193}, pages={110253}, year={2023}, publisher={Elsevier}
+ }
+'''
+
 import torch
 import torch.nn as nn
 from torch.nn import functional as F
