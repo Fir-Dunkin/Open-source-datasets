@@ -150,10 +150,7 @@ class Get_Model(nn.Module):
     def __init__(self, categories, model, dims = 64 ):
         super().__init__()
 
-        if model == 'MgNet':
-            self.backbone =  MgNet( dims )
-        if model == 'MSACNN':
-            self.backbone =  MSACNN( dims )
+        self.backbone =  MgNet( dims )
         self.predictor = Linear( dims, categories, zeros_init = True )
         
     def forward(self, x):
