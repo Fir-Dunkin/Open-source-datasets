@@ -1,6 +1,6 @@
 # You Can Get Smaller: A Lightweight Self-activation Convolution Unit Modified by Transformer for Fault Diagnosis
 
-
+The dataset (NEPU dataset) prepared in this article can be obtained through the following download methods：
 
 ## personalized Share Link
 https://authors.elsevier.com/c/1gWkY5FA1k5ovw
